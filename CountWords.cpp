@@ -161,7 +161,7 @@ void count (FILE * in, FILE * out)  {
 int main (int argc, char * argv[])  {
 
     //打开需要进行词频统计的文件
-    FILE * in = fopen ("test2.txt", "a+");
+    FILE * in = fopen (argv[1], "a+");
     if (! in)  {
 	    printf ("Failed to open the input file!\n");
 	    exit (1);
