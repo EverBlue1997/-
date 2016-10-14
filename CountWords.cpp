@@ -3,6 +3,7 @@
 # include <string>
 # include <string.h>
 
+# define debug printf ("ok\n")
 
 using namespace std;
 
@@ -75,7 +76,7 @@ void count (FILE * in, FILE * out)  {
 
 	//统计单词的出现次数
 	while (! feof(in))  {
-
+        
 		memset (s, 0, sizeof(s));
 		haveRecord = false;
 		k = 0;
@@ -97,7 +98,7 @@ void count (FILE * in, FILE * out)  {
 				if (isSame (s, w[i].word))  {             //若出现过
 
 					w[i].count ++;                        //频数+1
-					if (s < w[i].word) {                  //如果该单词的字典序较小
+					if (s > w[i].word) {                  //如果该单词的字典序较小
 						strcpy (w[i].word, s);            //替换之前的单词
 					}
 					haveRecord = true;
@@ -143,6 +144,7 @@ void count (FILE * in, FILE * out)  {
 	//结果输出到目标文件中
 	for (i = 0; i < countUpNow; i ++) {
 
+
 		itoa (w[i].count, s, 20);
 		fputs ("<", out);
 		fputs (w[i].word, out);
@@ -159,7 +161,7 @@ void count (FILE * in, FILE * out)  {
 int main (int argc, char * argv[])  {
 
     //打开需要进行词频统计的文件
-    FILE * in = fopen (argv[0], "a+");
+    FILE * in = fopen ("test2.txt", "a+");
     if (! in)  {
 	    printf ("Failed to open the input file!\n");
 	    exit (1);
