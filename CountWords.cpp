@@ -146,7 +146,7 @@ void count (FILE * in, FILE * out)  {
 	for (i = 0; i < countUpNow; i ++) {
 
 
-		itoa (w[i].count, s, 20);
+		itoa (w[i].count, s, 10);
 		fputs ("<", out);
 		fputs (w[i].word, out);
 		fputs (">: ", out);
@@ -171,7 +171,7 @@ int main (int argc, char * argv[])  {
 	}
 
     //打开输出文件
-    FILE * out = fopen ("result.txt", "a+");
+    FILE * out = fopen ("result.txt", "w+");
     if (! out)  {
 	    printf ("Failed to open the output file!\n");
 	    exit (1);
